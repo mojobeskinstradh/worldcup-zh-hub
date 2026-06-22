@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界杯 · 中文观赛指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1e1f2b;
+      background: #f5f7fb;
+      line-height: 1.6;
+    }
+
+    /* 深色头图 */
+    .hero {
+      background: linear-gradient(145deg, #0b1a2e 0%, #192f47 100%);
+      color: #f0f3f9;
+      padding: 4rem 2rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px;
+      left: -10%;
+      width: 120%;
+      height: 80px;
+      background: #f5f7fb;
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .subhead {
+      font-size: 1.25rem;
+      opacity: 0.85;
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0.5rem auto 0;
+    }
+
+    /* 浅色正文区 */
+    .container {
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      border-left: 5px solid #0b5e7b;
+      padding-left: 0.8rem;
+      color: #0b1a2e;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: #1f3a4b;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      max-width: 72ch;
+    }
+
+    .intro {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .intro-text {
+      flex: 2 1 300px;
+    }
+
+    .intro-highlight {
+      flex: 1 1 200px;
+      background: #e6edf5;
+      border-radius: 20px;
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+
+    .intro-highlight p {
+      font-size: 0.95rem;
+    }
+
+    .highlight-icon {
+      font-size: 2.2rem;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    /* 特点卡片 */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.8rem 1.4rem;
+      box-shadow: 0 6px 16px rgba(0, 20, 40, 0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s;
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0, 20, 40, 0.1);
+    }
+
+    .card .emoji {
+      font-size: 2.2rem;
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #3b4b5a;
+    }
+
+    .emoji-bg {
+      background: #f0f5fa;
+      display: inline-block;
+      width: 48px;
+      height: 48px;
+      line-height: 52px;
+      text-align: center;
+      border-radius: 16px;
+      margin-bottom: 0.6rem;
+    }
+
+    .emoji-bg span {
+      font-size: 1.8rem;
+    }
+
+    /* 使用建议——场景块 */
+    .scenario-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .scenario-item {
+      background: white;
+      border-radius: 18px;
+      padding: 1.2rem 1.6rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .scenario-num {
+      background: #0b5e7b;
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      flex-shrink: 0;
+      font-size: 0.9rem;
+    }
+
+    .scenario-text {
+      flex: 1;
+    }
+
+    .scenario-text p {
+      margin-bottom: 0.2rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eef3f9;
+      padding: 0.1rem 0.8rem;
+      border-radius: 30px;
+      font-size: 0.75rem;
+      color: #0b5e7b;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+
+    /* 提示 / FAQ 摘要 */
+    .note-box {
+      background: #eaf0f7;
+      border-radius: 24px;
+      padding: 2rem 2rem 1.8rem;
+      margin-top: 1.5rem;
+      border-left: 6px solid #0b5e7b;
+    }
+
+    .note-box h3 {
+      margin-top: 0;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 18px;
+      padding: 1rem 1.2rem;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 600;
+      color: #0b1e2e;
+      margin-bottom: 0.3rem;
+      font-size: 0.95rem;
+    }
+
+    .faq-item p {
+      font-size: 0.9rem;
+      color: #3b4f5e;
+      margin-bottom: 0;
+    }
+
+    /* 强调色链接 */
+    a {
+      color: #0a5f7a;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s, color 0.15s;
+      font-weight: 500;
+    }
+
+    a:hover {
+      color: #083c50;
+      border-bottom-color: #0a5f7a;
+    }
+
+    .hero a {
+      color: #b7d9ed;
+      border-bottom-color: rgba(183, 217, 237, 0.3);
+    }
+
+    .hero a:hover {
+      color: white;
+      border-bottom-color: white;
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #cbd7e4, transparent);
+      margin: 2rem 0 2.5rem;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #657b8a;
+      border-top: 1px solid #dde4ec;
+      padding-top: 2rem;
+      margin-top: 2rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero .subhead {
+        font-size: 1rem;
+      }
+
+      .container {
+        padding: 1.5rem 1rem 3rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .scenario-item {
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .intro-highlight {
+        margin-top: 0.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 深色头图 -->
+  <header class="hero">
+    <h1>⚽ 世界杯 · 中文视角</h1>
+    <p class="subhead">快速识别网站用途、内容侧重与使用方式 —— 一个为中文用户梳理的世界杯信息站</p>
+  </header>
+
+  <!-- 浅色正文区 -->
+  <div class="container">
+
+    <!-- 摘要 + 亮点 混合区 -->
+    <section>
+      <div class="intro">
+        <div class="intro-text">
+          <h2>这个网站做什么？</h2>
+          <p>如果你刚刚打开 <a href="https://worldcup-zh-fifa.com">世界杯</a> 这个站点，很可能想先弄明白：它提供什么、是否适合自己。简单说，这是一个以中文整理的世界杯相关内容聚合页面，涵盖赛事背景、历届记录、球队与赛程的基础信息，以及围绕<a href="https://worldcup-zh-fifa.com">世界杯</a>的泛知识梳理。</p>
+          <p>页面没有复杂的交互或付费功能，更像一本轻量的数字手册，适合快速查阅、对比或作为话题索引。你可以把它当作了解世界杯的起点，而不是唯一的信息终点。</p>
+        </div>
+        <div class="intro-highlight">
+          <div class="highlight-icon">📌</div>
+          <p><strong>一句话定位</strong><br>中文语境下的世界杯信息速览与导航。内容经筛选，侧重常识性与时效性之间的平衡。</p>
+          <p style="margin-top: 0.8rem;"><span style="background: #0b5e7b; color: white; padding: 0.2rem 0.8rem; border-radius: 30px; font-size: 0.7rem;">无弹窗 · 无注册</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 特点 / 亮点（卡片式，非典型卖点，偏功能介绍） -->
+    <section>
+      <h2>内容特点</h2>
+      <div class="features">
+        <div class="card">
+          <div class="emoji-bg"><span>📋</span></div>
+          <h3>结构化浏览</h3>
+          <p>每届世界杯按年份、主办国、冠军等维度列出，方便对比与回溯，减少多次跳转。</p>
+        </div>
+        <div class="card">
+          <div class="emoji-bg"><span>🌐</span></div>
+          <h3>中文优先</h3>
+          <p>专为中文读者整理，名词、球队名称、赛制说明尽量采用常用译名，降低理解门槛。</p>
+        </div>
+        <div class="card">
+          <div class="emoji-bg"><span>⏳</span></div>
+          <h3>跨度与更新</h3>
+          <p>涵盖早期赛事至今，遇重大赛事周期会补充当届预选赛或决赛阶段简讯。</p>
+        </div>
+        <div class="card">
+          <div class="emoji-bg"><span>🔗</span></div>
+          <h3>可信外链</h3>
+          <p>引用来源以国际足联官方及权威体育媒体为主，页面内无用户生成内容。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 使用建议（场景式，非教程） -->
+    <section>
+      <h2>使用建议</h2>
+      <div class="scenario-list">
+        <div class="scenario-item">
+          <span class="scenario-num">1</span>
+          <div class="scenario-text">
+            <p><strong>快速查阅历届冠军</strong> <span class="tag">查数据</span></p>
+            <p>如果你想回忆某一年世界杯的决赛结果或主办地，网站按时间线列出基本数据，省去搜索过滤的步骤。</p>
+          </div>
+        </div>
+        <div class="scenario-item">
+          <span class="scenario-num">2</span>
+          <div class="scenario-text">
+            <p><strong>话题预热或观赛背景</strong> <span class="tag">赛前</span></p>
+            <p>在大赛前快速浏览往届记录、东道主信息，帮自己或朋友建立基本的赛事脉络，聊天时更有谈资。</p>
+          </div>
+        </div>
+        <div class="scenario-item">
+          <span class="scenario-num">3</span>
+          <div class="scenario-text">
+            <p><strong>非深度资料索引</strong> <span class="tag">轻参考</span></p>
+            <p>网站定位并非百科或数据仓库，但可以作为进一步搜索的起点——读到感兴趣的国家或年份，再去专业数据库深挖。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 克制访问说明 + FAQ 摘要 -->
+    <section>
+      <h2>关于访问与内容边界</h2>
+      <div class="note-box">
+        <h3>⚙️ 可信但克制的说明</h3>
+        <p>网站内容由维护者根据公开信息整理，不包含实时比分、直播或博彩类链接。所有<a href="https://worldcup-zh-fifa.com">世界杯</a>相关数据均标注参考来源，但受限于个人维护精力，可能存在延迟或不完整。如果你发现错误或有补充建议，可以通过页面底部联系方式反馈（暂未开放评论功能）。</p>
+        <p style="margin-bottom: 0.2rem;">本站不收集个人信息，无广告联盟脚本，只使用基础统计工具了解访问趋势（匿名化）。</p>
+
+        <div class="faq-grid">
+          <div class="faq-item">
+            <strong>🌍 数据覆盖到哪一年？</strong>
+            <p>从1930年首届至最近一届完整赛事，当届赛事期间会更新小组赛/淘汰赛简况。</p>
+          </div>
+          <div class="faq-item">
+            <strong>📱 移动端适配吗？</strong>
+            <p>页面采用响应式布局，手机或平板均可正常阅读，但不提供独立 App。</p>
+          </div>
+          <div class="faq-item">
+            <strong>📆 会更新2026 年信息吗？</strong>
+            <p>待主办国及赛程正式公布后会逐步添加，目前可见基础框架。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <div class="footer-note">
+      <p>基于开放信息整理 · 非国际足联官方站点 · 内容仅供参考<br>
+      如需最权威信息，请访问 FIFA 官方网站。</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
